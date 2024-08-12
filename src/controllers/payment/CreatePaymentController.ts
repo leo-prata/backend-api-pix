@@ -23,7 +23,7 @@ interface PaymentBody {
 }
 
 class CreatePaymentController {
-   handle(req: Request, res: Response) {
+   async handle(req: Request, res: Response) {
      
     const client = new MercadoPagoConfig(
         { accessToken: process.env.ACCESS_TOKEN || '', 
@@ -46,18 +46,24 @@ class CreatePaymentController {
 
     const requestOptions = { idempotencyKey: v4() };
 
-    payment.create({ body, requestOptions })
-    .then((result) => {
-      console.log('result');
-      console.log(result);
-    })
-    .catch((err) => {
-      console.log('error');
-      console.log(err);
-    });
-  
-    return res.json({ message: 'Payment created' });  
+    const result = await payment.create({ body, requestOptions });
+
+    const qrCode = result.point_of_interaction?.transaction_data?.qr_code;
+    const qr_code_base64 = result.point_of_interaction?.transaction_data?.qr_code_base64;
+
+    if (qrCode) {
+      // Resposta com o QR Code
+      return res.json({ qrCode, qr_code_base64 });
+    } else {
+      return res.status(400).json({ message: 'QR Code não encontrado' });
+    }
+  } catch (err: any) {
+    console.error('Erro ao criar pagamento:', err);
+    const res = err.response;
+    return res.status(500).json({ message: 'Erro ao criar pagamento' });
   }
-}
+   
+  }
+
 
 export default new CreatePaymentController();
