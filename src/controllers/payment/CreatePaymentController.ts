@@ -20,6 +20,7 @@ interface PaymentBody {
   description: string;
   payment_method_id: string;
   payer: Payer;
+  notification_url: string;
 }
 
 class CreatePaymentController {
@@ -41,7 +42,8 @@ class CreatePaymentController {
           identification: {
       type: req.body.identificationType,
       number: req.body.number
-      }}
+      }},
+      notification_url: "https://cf32-186-235-106-214.ngrok-free.app/"
     };
 
     const requestOptions = { idempotencyKey: v4() };
