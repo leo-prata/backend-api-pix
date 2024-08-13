@@ -43,7 +43,7 @@ class CreatePaymentController {
       type: req.body.identificationType,
       number: req.body.number
       }},
-      notification_url: "https://cf32-186-235-106-214.ngrok-free.app/"
+      notification_url: "https://cf32-186-235-106-214.ngrok-free.app/webhook"
     };
 
     const requestOptions = { idempotencyKey: v4() };
