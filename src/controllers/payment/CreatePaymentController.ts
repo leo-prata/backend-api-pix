@@ -52,10 +52,11 @@ class CreatePaymentController {
 
     const qrCode = result.point_of_interaction?.transaction_data?.qr_code;
     const qr_code_base64 = result.point_of_interaction?.transaction_data?.qr_code_base64;
+    const paymentId = result.id;
 
     if (qrCode) {
       // Resposta com o QR Code
-      return res.json({ qrCode, qr_code_base64 });
+      return res.json({ qrCode, qr_code_base64, paymentId });
     } else {
       return res.status(400).json({ message: 'QR Code não encontrado' });
     }
