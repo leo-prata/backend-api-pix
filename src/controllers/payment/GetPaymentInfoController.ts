@@ -18,7 +18,7 @@ class GetPaymentInfoController {
 
       const result = await payment.get({ id: paymentId });
 
-      return res.json(result);
+      return res.json({ status: result.status });
     } catch (err: any) {
       console.error('Erro ao obter informações do pagamento:', err);
       return res.status(500).json({ message: 'Erro ao obter informações do pagamento' });
