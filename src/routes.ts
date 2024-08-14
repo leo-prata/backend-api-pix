@@ -3,6 +3,8 @@ import CreatePaymentController from './controllers/payment/CreatePaymentControll
 import GetPaymentInfoController from './controllers/payment/GetPaymentInfoController';
 import CreateWebhookController from './controllers/webhook/CreateWebhookController';
 import GetWebhookController from './controllers/webhook/GetWebhookController';
+import CreateGameController from './controllers/jogo/CreateGameController';
+import ListGameController from './controllers/jogo/ListGameController';
 
 const router = Router();
 
@@ -14,5 +16,8 @@ router.get('/payment-info/:id', GetPaymentInfoController.handle);
 router.get('/webhook',  GetWebhookController.handle);
 router.post('/webhook',  CreateWebhookController.handle);
 
+//game routes
+router.post('/jogos', CreateGameController.handle);
+router.get('/jogos', ListGameController.handle);
 
 export { router };
