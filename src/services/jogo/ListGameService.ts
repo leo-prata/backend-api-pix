@@ -30,6 +30,7 @@ class ListGameService{
                 valor: doc.data().valor,
                 estaPago: doc.data().estaPago,
             }));
+            
             return jogos;
         } catch (error: unknown) {
             if (error instanceof Error) {
