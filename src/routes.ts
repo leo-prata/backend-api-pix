@@ -27,4 +27,9 @@ router.get('/jogos', ListGameController.handle);
 router.delete('/jogos/:id', DeleteGameController.handle);
 router.put('/jogos/:id', UpdateGameController.handle);
 
+//index route
+router.get('/', (req, res) => {
+    res.send('Hello World');
+});
+
 export { router };
