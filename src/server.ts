@@ -7,6 +7,14 @@ import path from 'path';
 const app = express();
 
 app.use(express.json());
+
+const corsOptions = {
+    origin: process.env.API_VERCEL, 
+    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+    credentials: true,
+    optionsSuccessStatus: 204
+  };
+
 app.use(cors());
 
 app.use(router);
