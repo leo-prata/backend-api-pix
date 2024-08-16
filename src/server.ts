@@ -31,3 +31,5 @@ app.use((e: Error, req: Request, res: Response, next: NextFunction) => {
 
 const port = process.env.PORT || 3111;
 app.listen(port, () => console.log('Server is running on port 3111'));
+
+export default app;

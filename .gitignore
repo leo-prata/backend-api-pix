@@ -1,5 +1,7 @@
 .env
 node_modules
 teste.js
+dist
 
 src/config/rei-da-quadra-firebase-adminsdk-nwjiu-9747650377.json
+
