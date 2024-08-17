@@ -8,12 +8,20 @@ const app = express();
 
 app.use(express.json());
 
-const corsOptions = {
-    origin: process.env.API_VERCEL, 
-    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
-    credentials: true,
-    optionsSuccessStatus: 204
-  };
+const whitelist = [
+    process.env.API_VERCEL,
+    process.env.FRONTEND_VERCEL
+];
+
+const corsOptions: cors.CorsOptions = {
+    origin: (origin, callback) => {
+        if (whitelist.indexOf(origin) !== -1 || !origin) {
+            callback(null, true);
+        } else {
+            callback(new Error(`Origin not allowed by Cors: ${origin}`));
+        }
+    },
+};
 
 app.use(cors(corsOptions));
 
