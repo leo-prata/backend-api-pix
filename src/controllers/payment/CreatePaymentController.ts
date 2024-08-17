@@ -54,6 +54,11 @@ class CreatePaymentController {
     const qr_code_base64 = result.point_of_interaction?.transaction_data?.qr_code_base64;
     const paymentId = result.id;
 
+    // Adicione os cabeçalhos CORS manualmente
+    res.setHeader('Access-Control-Allow-Origin', '*');
+    res.setHeader('Access-Control-Allow-Methods', 'GET,HEAD,PUT,PATCH,POST,DELETE');
+    res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+
     if (qrCode) {
       // Resposta com o QR Code
       return res.json({ qrCode, qr_code_base64, paymentId });
