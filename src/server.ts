@@ -8,6 +8,7 @@ const app = express();
 
 app.use(express.json());
 
+/*
 const whitelist = [
     process.env.API_VERCEL,
     process.env.FRONTEND_VERCEL
@@ -22,8 +23,8 @@ const corsOptions: cors.CorsOptions = {
         }
     },
 };
-
-app.use(cors(corsOptions));
+*/
+app.use(cors());
 
 app.use(router);
 
