@@ -35,7 +35,15 @@ const corsOptions: cors.CorsOptions = {
     },
 };
 */
-app.use(cors());
+
+const corsOptions = {
+    origin: 'https://frontend-api-pix.vercel.app',  // Origem específica
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+    allowedHeaders: ['Content-Type', 'Authorization'],
+    optionsSuccessStatus: 200
+};
+
+app.use(cors(corsOptions));
 
 app.use(router);
 
@@ -57,7 +65,7 @@ app.use((e: Error, req: Request, res: Response, next: NextFunction) => {
     })
 });
 
-const port = process.env.PORT || 3111;
+const port = 3111;
 app.listen(port, () => console.log('Server is running on port 3111'));
 
 export default app;
