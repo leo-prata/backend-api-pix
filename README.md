@@ -13,7 +13,7 @@ Antes de começar, você vai precisar ter instalado em sua máquina as seguintes
 
 1. Clone este repositório:
    ```sh
-   git clone https://github.com/seu-usuario/backend-api-pix.git
+   git clone https://github.com/leo-prata/backend-api-pix.git
 2. Navegue até o diretório do projeto:
    ```sh
    cd backend-api-pix
